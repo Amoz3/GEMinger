@@ -7,8 +7,11 @@ import org.dreambot.api.methods.interactive.Players;
 import org.dreambot.api.methods.map.Tile;
 import org.dreambot.api.methods.walking.impl.Walking;
 import org.dreambot.api.script.AbstractScript;
+import org.dreambot.api.script.Category;
+import org.dreambot.api.script.ScriptManifest;
 import org.dreambot.api.wrappers.interactive.Player;
 
+@ScriptManifest(category = Category.MISC, name = "Trans", author = "", version = 0.0)
 public class Main extends AbstractScript {
     GlobalState state = GlobalState.getGlobalState();
 
