@@ -32,7 +32,11 @@ public class Main extends AbstractScript {
         }
 
         if (state.isTravel() && Walking.shouldWalk()) {
-            Walking.walkExact(new Tile(state.getDestX(), state.getDestY()));
+            Tile tile = new Tile(state.getDestX(), state.getDestY());
+            Walking.walkExact(tile);
+            if (Players.localPlayer().getTile().equals(tile)) {
+                state.setTravel(false);
+            }
             return 600;
         }
 

@@ -8,8 +8,8 @@ public class GlobalState {
     boolean dance;
 
     boolean travel;
-    int destX;
-    int destY;
+    int destX = 0;
+    int destY = 0;
 
     boolean follow;
     String adminUser = "Africagamer1";
