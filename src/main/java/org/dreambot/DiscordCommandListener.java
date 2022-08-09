@@ -21,9 +21,7 @@ public class DiscordCommandListener extends ListenerAdapter {
         switch (command[0]) {
             case "follow":
                 state.setFollow(!state.isFollow());
-                if (command.length >= 2 && command[1] != null && !command[1].equals("")) {
-                    state.setAdminUser(command[1]);
-                }
+                state.setAdminUser(event.getMessage().getContentRaw().replace("follow ", ""));
                 break;
             case "travel":
                 if (command.length >= 3) {
@@ -41,7 +39,9 @@ public class DiscordCommandListener extends ListenerAdapter {
                 break;
             case "marco":
                 DiscordUtils.sendUpdate(discordBot, "general");
-
+                break;
+            case "stopTravel":
+                state.setTravel(false);
                 break;
         }
     }

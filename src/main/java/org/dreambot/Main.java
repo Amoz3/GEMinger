@@ -35,6 +35,7 @@ public class Main extends AbstractScript {
             discord.addEventListener(new DiscordCommandListener(discord));
         }
         Keyboard.setWordsPerMinute(200);
+        Walking.setRunThreshold(30);
     }
 
     @Override

@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class DiscordUtils {
-    private static final String BOT_TOKEN = "OTk1Mzk3NDE5MzE3NTkyMDk0.GL7Ww-.m_mtuhAe39fYHEJimJOS2LQqdS6LMj0tsKZbxQ";
+    private static final String BOT_TOKEN = "";
     static GlobalState state = GlobalState.getGlobalState();
 
     /**
