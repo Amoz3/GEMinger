@@ -1,5 +1,7 @@
 package org.dreambot;
 
+import net.dv8tion.jda.api.JDA;
+import org.dreambot.api.methods.MethodProvider;
 import org.dreambot.api.methods.emotes.Emote;
 import org.dreambot.api.methods.emotes.Emotes;
 import org.dreambot.api.methods.input.Keyboard;
@@ -14,9 +16,24 @@ import org.dreambot.api.wrappers.interactive.Player;
 @ScriptManifest(category = Category.MISC, name = "Trans", author = "", version = 0.0)
 public class Main extends AbstractScript {
     GlobalState state = GlobalState.getGlobalState();
-
+    JDA discord;
     @Override
     public void onStart(String... params) {
+        discord = DiscordUtils.initDiscordBot();
+        sleep(5000);
+        if (discord != null) {
+            discord.addEventListener(new DiscordCommandListener(discord));
+        }
+        Keyboard.setWordsPerMinute(200);
+    }
+
+    @Override
+    public void onStart() {
+        discord = DiscordUtils.initDiscordBot();
+        sleep(5000);
+        if (discord != null) {
+            discord.addEventListener(new DiscordCommandListener(discord));
+        }
         Keyboard.setWordsPerMinute(200);
     }
 
@@ -35,8 +52,10 @@ public class Main extends AbstractScript {
         }
 
         if (state.isTravel() && Walking.shouldWalk()) {
+            log("Traveling");
             Tile tile = new Tile(state.getDestX(), state.getDestY());
-            Walking.walkExact(tile);
+            log(tile.toString());
+            Walking.walk(tile);
             if (Players.localPlayer().getTile().equals(tile)) {
                 state.setTravel(false);
             }
@@ -51,5 +70,10 @@ public class Main extends AbstractScript {
             }
         }
         return 600;
+    }
+
+    @Override
+    public void onExit() {
+        discord.shutdownNow();
     }
 }

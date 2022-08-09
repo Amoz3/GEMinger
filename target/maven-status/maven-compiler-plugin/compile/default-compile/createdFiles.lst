@@ -1,3 +1,4 @@
-org/dreambot/Main.class
 org/dreambot/GlobalState.class
+org/dreambot/DiscordUtils.class
+org/dreambot/Main.class
 org/dreambot/DiscordCommandListener.class

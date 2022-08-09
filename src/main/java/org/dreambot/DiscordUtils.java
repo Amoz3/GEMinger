@@ -17,8 +17,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class DiscordUtils {
-    private static final String BOT_TOKEN = "OTk1Mzk3NDE5MzE3NTkyMDk0.GVvmIb.Sy5HNQOCVidApwLUKazih_R1k_Yzmmi1hvEtKQ";
-
+    private static final String BOT_TOKEN = "OTk1Mzk3NDE5MzE3NTkyMDk0.GL7Ww-.m_mtuhAe39fYHEJimJOS2LQqdS6LMj0tsKZbxQ";
+    static GlobalState state = GlobalState.getGlobalState();
 
     /**
      *  finds and then requests focus on dreambot window
@@ -108,11 +108,14 @@ public class DiscordUtils {
      * @return the message all the methods will send with screenshots or on update
      */
     public static String getUpdateMessage() {
-        int atk = Skills.getRealLevel(Skill.ATTACK);
-        int def = Skills.getRealLevel(Skill.DEFENCE);
-        int str = Skills.getRealLevel(Skill.STRENGTH);
-        int agil = Skills.getRealLevel(Skill.AGILITY);
-        return "```herro```";
+        return "```"
+                + "\nIsTravel: " + state.isTravel()
+                + "\nIsFollow: " + state.isFollow()
+                + "\nIsSendMsg: " + state.isSendMsg()
+                + "\nIsDance: " + state.isDance()
+                + "\nAdmin: " + state.getAdminUser()
+                + "\nTile: " + state.getDestX() + ", " + state.getDestY()
+                + "```";
     }
 
     /**
